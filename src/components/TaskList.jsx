@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { addNewTask, deleteTask, getTasks, updateTask } from '../firebase/taskController';
+import { AppContex } from '../App';
 
 const TaskList = () => {
 
@@ -7,8 +8,10 @@ const TaskList = () => {
   const [tasks, setTasks] = useState([]);
   const [mode, setMode] = useState('add');
 
+  const { user } = useContext(AppContex);
+
   const createNewTask = async () => {
-    await addNewTask(task);
+    await addNewTask(task).catch(e => console.log("Error!!!!!"));
     setTask({ title: '', description: '' });
     // initializeTasks();
   }
@@ -53,6 +56,7 @@ const TaskList = () => {
           type="text"
           id='title'
           value={task.title}
+          disabled={!user}
           placeholder='Título'
           className='border shadow outline-none focus:right-auto ring-sky-200 rounded px-2 py-1 w-full'
           onChange={(e) => setTask({ ...task, title: e.currentTarget.value })}
@@ -62,11 +66,12 @@ const TaskList = () => {
           id='description'
           rows={3}
           value={task.description}
+          disabled={!user}
           placeholder='Descripción'
           className='border shadow outline-none focus:right-auto ring-sky-200 rounded px-2 py-1 w-full'
           onChange={(e) => setTask({ ...task, description: e.currentTarget.value })}
         />
-        <button className='bg-sky-400 text-white rounded shadow py-1 hover:bg-sky-500 transition font-semibold' onClick={() => mode === 'add' ? createNewTask() : updateExistingTask()}>{mode === 'add' ? 'Añadir' : 'Actualizar'}
+        <button className='bg-sky-400 text-white rounded shadow py-1 hover:bg-sky-500 transition font-semibold disabled:bg-sky-200' disabled={!user} onClick={() => mode === 'add' ? createNewTask() : updateExistingTask()}>{mode === 'add' ? 'Añadir' : 'Actualizar'}
         </button>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
@@ -85,6 +90,7 @@ const TaskList = () => {
         ))
         }
       </div>
+      {!user && <p className='text-red-600'>Necesitas estar logueado para poder leer y añadir tareas</p>}
     </div>
   )
 }
