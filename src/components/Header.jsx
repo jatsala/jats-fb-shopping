@@ -23,7 +23,7 @@ const Header = () => {
         <header className="h-20 w-full bg-gray-100 shadow-lg flex items-center justify-between px-8 fixed top-0">
             <div className='flex items-center gap-2 cursor-pointer' onClick={() => setRoute('home')}>
                 <SiFirebase className='text-2xl text-pink-600' />
-                <div className='text-xl font-semibold text-pink-600'>FbShopping</div>
+                <div className='text-xl font-semibold text-pink-600'>FbShopping V2</div>
             </div>
             <div className='flex gap-2'>
                 {user ? <>
