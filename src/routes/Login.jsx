@@ -58,9 +58,9 @@ const Login = () => {
             <h1 className='text-xl font-semibold text-sky-700 mb-8'>Bienvenid@ a Login</h1>
             <div className='flex flex-col items-center'>
                 <form onSubmit={hazLoginConEmail} className='flex flex-col gap-2 max-w-sm'>
-                    <input className='border border-gray-500 rounded py-1 px-2 outline-none' id='emailLogin' type="email" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
-                    <input className='border border-gray-500 rounded py-1 px-2 outline-none' id='passwordLogin' type="password" value={password} onChange={(e) => setPassword(e.currentTarget.value)} />
-                    <button className='bg-sky-400 py-1 text-white rounded shadow'>Log In</button>
+                    <input placeholder='Email' className='border border-gray-500 rounded py-1 px-2 outline-none' id='emailLogin' type="email" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
+                    <input placeholder='Password' className='border border-gray-500 rounded py-1 px-2 outline-none' id='passwordLogin' type="password" value={password} onChange={(e) => setPassword(e.currentTarget.value)} />
+                    <button className='submit-button'>Log In</button>
                 </form>
                 <button onClick={hazLoginGoogle}>... o haz login con Google</button>
             </div>

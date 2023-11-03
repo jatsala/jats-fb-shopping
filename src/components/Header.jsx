@@ -30,7 +30,7 @@ const Header = () => {
                     <button onClick={hazLogout}>Logout</button>
                 </> :
                     <>
-                        <button className='bg-sky-500 text-white py-1 px-3 hover:bg-sky-700 transition rounded-full' onClick={() => setRoute('login')}>Loguin</button>
+                        <button className='bg-sky-500 text-white py-1 px-3 hover:bg-sky-700 transition rounded-full' onClick={() => setRoute('login')}>Login</button>
                         <button onClick={() => setRoute('register')}>...o regístrate</button>
                     </>}
             </div>

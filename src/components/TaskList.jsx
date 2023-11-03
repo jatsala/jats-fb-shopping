@@ -71,7 +71,7 @@ const TaskList = () => {
           className='border shadow outline-none focus:right-auto ring-sky-200 rounded px-2 py-1 w-full'
           onChange={(e) => setTask({ ...task, description: e.currentTarget.value })}
         />
-        <button className='bg-sky-400 text-white rounded shadow py-1 hover:bg-sky-500 transition font-semibold disabled:bg-sky-200' disabled={!user} onClick={() => mode === 'add' ? createNewTask() : updateExistingTask()}>{mode === 'add' ? 'Añadir' : 'Actualizar'}
+        <button className='submit-button' disabled={!user} onClick={() => mode === 'add' ? createNewTask() : updateExistingTask()}>{mode === 'add' ? 'Añadir' : 'Actualizar'}
         </button>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 mt-4'>
